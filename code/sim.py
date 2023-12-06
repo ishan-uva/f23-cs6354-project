@@ -1,5 +1,6 @@
 import sys
 import os
+import gzip
 
 from cache_lfu import Cache as CacheLFU
 from cache_random import Cache as CacheRandom
@@ -38,13 +39,14 @@ if __name__ == "__main__":
         cache.reset()
         compute = 0
 
-        with open(f"./traces/{file}") as f:
+        with gzip.open('./traces/{}'.format(file), 'rt') as f:
             trace = f.readlines()
+            trace_elements = len(trace)
 
         for t in range(len(trace)):
 
-            if t % 1000 == 0:
-                print("Processing the program trace, progress so far =", int(t / len(trace) * 100), "%")
+            # if t % 1000 == 0:
+            #     print("Processing the program trace, progress so far =", int(t / len(trace) * 100), "%")
 
             compute += int(trace[t].split(" ")[0])
             address = int(trace[t].split(" ")[1])
@@ -53,11 +55,11 @@ if __name__ == "__main__":
             if found == False:
                 cache.load(address)
 
-            print("set and tag of", hex(address), "is", cache.find_set(address), cache.find_tag(address))
-            if found:
-                print("address", hex(address), "CACHE HIT. Good Job.")
-            else:
-                print("address", hex(address), "CACHE MISS. Loading from memory.")
+            # print("set and tag of", hex(address), "is", cache.find_set(address), cache.find_tag(address))
+            # if found:
+            #     print("address", hex(address), "CACHE HIT. Good Job.")
+            # else:
+            #     print("address", hex(address), "CACHE MISS. Loading from memory.")
         
         load_requests = len(trace)
         misses = load_requests - cache.hit

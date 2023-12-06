@@ -83,7 +83,7 @@ class Cache:
         s = self.find_set(address)
         t = self.find_tag(address)
 
-        random_index = random.randint(0, len(self.cache[s]))
+        random_index = random.randint(0, len(self.cache[s]) - 1)
 
         self.cache[s][random_index] = [ t for _ in range(self.blockSize) ]
         # self.metaCache[s][random_index] = self.hit + self.miss + 1

@@ -60,32 +60,29 @@ class Cache:
 
     def find(self, address):
 
-        s = self.find_set(address)
-        t = self.find_tag(address)
-
-        for i in range(len(self.cache[s])):
-
-            if t != self.cache[s][i][0]:
-                continue
-
-            self.metaCache[s][i] = self.hit + self.miss + 1
+        tag = self.find_tag(address)
+        set_number = self.find_set(address)
+        set_number = np.where(self.cache[set_number] == tag)
+        if set_number[0].size > 0:
             self.hit += 1
+            # Increment the frequency of the accessed block
+            self.metaCache[self.find_set(address)] += 1
             return True
-
-        self.miss += 1
-        return False
-
+        else:
+            self.miss += 1
+            return False
+        
    
     def load(self, address):
-
+        set_number = self.find_set(address)
+        tag = self.find_tag(address)
         if self.find(address):
             return
-
-        s = self.find_set(address)
-        t = self.find_tag(address)
-
-        older_index = np.argmin(self.metaCache[s])
-
-        self.cache[s][older_index] = [ t for _ in range(self.blockSize) ]
-        self.metaCache[s][older_index] = self.hit + self.miss + 1
+        else:
+            # Find the block with the least frequency
+            replacement_block = np.argmin(self.metaCache[set_number])
+            # Replace the block with the new block
+            self.cache[set_number][replacement_block // self.blockSize] = tag
+            # Reset the frequency of the new block
+            self.metaCache[set_number][replacement_block // self.blockSize] = 0
 

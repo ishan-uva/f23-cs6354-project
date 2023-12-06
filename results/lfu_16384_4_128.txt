@@ -1,0 +1,27 @@
+====================
+Initializing CACHE w/ LEAST FREQUENTLY USED replacement. Properties include:
+cacheSize: 16384
+ways: 4
+blockSize: 128
+sets: 32
+====================
+471.omnetpp.gz
+total cache misses 3621493
+miss_rate 0.9359751929265312
+hit_rate 0.0640248070734688
+Finished processing your program trace, progress = 100.0 %
+482.sphinx3.gz
+total cache misses 2479041
+miss_rate 0.9373438180002579
+hit_rate 0.0626561819997421
+Finished processing your program trace, progress = 100.0 %
+434.zeusmp.gz
+total cache misses 1728380
+miss_rate 0.9338909511381995
+hit_rate 0.06610904886180047
+Finished processing your program trace, progress = 100.0 %
+473.astar.gz
+total cache misses 858443
+miss_rate 0.8257276697254766
+hit_rate 0.17427233027452338
+Finished processing your program trace, progress = 100.0 %

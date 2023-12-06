@@ -1,0 +1,27 @@
+====================
+Initializing CACHE w/ RANDOM replacement. Properties include:
+cacheSize: 16384
+ways: 4
+blockSize: 4096
+sets: 1
+====================
+471.omnetpp.gz
+total cache misses 2619422
+miss_rate 0.6769898524741039
+hit_rate 0.3230101475258961
+Finished processing your program trace, progress = 100.0 %
+482.sphinx3.gz
+total cache misses 765563
+miss_rate 0.28946505739103606
+hit_rate 0.710534942608964
+Finished processing your program trace, progress = 100.0 %
+434.zeusmp.gz
+total cache misses 1523743
+miss_rate 0.823319987248275
+hit_rate 0.17668001275172496
+Finished processing your program trace, progress = 100.0 %
+473.astar.gz
+total cache misses 564558
+miss_rate 0.5430426501991112
+hit_rate 0.45695734980088876
+Finished processing your program trace, progress = 100.0 %
